@@ -1,13 +1,14 @@
 import { getWeeklyReports } from "@/app/actions/reports"
-import { Plus, Search, Filter } from "lucide-react"
+import { Search, Filter, Eye } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { USER_NAMES } from "@/lib/utils"
 
 export default async function ReportsPage() {
     const reports = await getWeeklyReports()
 
     return (
-        <div className="flex flex-col gap-6 animate-in fade-in fill-mode-both duration-300">
+        <div className="flex flex-col gap-6 animate-in fade-in fill-mode-both duration-300 pb-8">
 
             <div className="flex flex-col gap-1">
                 <span className="text-xs font-semibold tracking-widest text-[#6B7280] uppercase">
@@ -42,7 +43,8 @@ export default async function ReportsPage() {
                         <p className="text-sm">Tap <span className="font-bold text-[#1E3A8A]">+</span> to submit your first weekly report.</p>
                     </div>
                 ) : reports.map((report: any) => {
-                    const submitterName = report.users?.name || report.users?.email || 'Unknown VA'
+                    const email = report.users?.email || ''
+                    const submitterName = USER_NAMES[email] || report.users?.name || email || 'Unknown VA'
                     const initials = submitterName.split(' ').map((n: string) => n[0]).join('').toUpperCase().slice(0, 2)
 
                     return (
@@ -53,15 +55,13 @@ export default async function ReportsPage() {
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-lg text-gray-900 leading-tight mb-0.5">{submitterName}</h3>
-                                    <p className="text-sm text-gray-500 font-medium">{report.period}</p>
-                                    <span className={`text-[10px] font-bold uppercase tracking-widest mt-1 inline-block ${report.status === 'submitted' ? 'text-green-600' : 'text-yellow-600'}`}>
-                                        {report.status}
-                                    </span>
+                                    <p className="text-sm text-gray-500 font-medium">Week: {report.week_start} - {report.week_end}</p>
                                 </div>
                             </div>
 
-                            <div className={`rounded-2xl h-12 px-5 font-bold text-sm tracking-wide flex items-center ${report.status === 'submitted' ? 'bg-[#0B215E] text-white' : 'bg-[#EBF0FF] text-[#1E3A8A]'}`}>
-                                {report.status === 'submitted' ? 'Submitted' : 'Draft'}
+                            <div className="rounded-2xl h-12 px-5 font-bold text-sm tracking-wide flex items-center gap-2 bg-[#F5F8FF] text-[#1E3A8A] border border-blue-100 group-hover:bg-[#1E3A8A] group-hover:text-white transition-colors cursor-pointer">
+                                <Eye className="w-4 h-4" />
+                                View
                             </div>
                         </div>
                     )
