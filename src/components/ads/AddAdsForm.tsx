@@ -37,7 +37,7 @@ export function AddAdsForm({ searchMessage, reportedDates }: AddAdsFormProps) {
     const isDateTaken = reportedDates.includes(formData.date)
 
     return (
-        <form action={submitAdsReport} className="bg-white/80 backdrop-blur-xl rounded-[2.5rem] p-8 sm:p-10 shadow-[0_15px_60px_rgba(0,0,0,0.04)] border border-white/60 flex flex-col gap-6 mt-2 relative overflow-hidden">
+        <form action={submitAdsReport} className="bg-white/80 backdrop-blur-xl rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 shadow-[0_15px_60px_rgba(0,0,0,0.04)] border border-white/60 flex flex-col gap-5 sm:gap-6 mt-2 relative overflow-hidden">
 
             {searchMessage && (
                 <div className="p-4 bg-red-50 text-red-600 rounded-xl text-sm border border-red-100 flex items-center gap-2">
@@ -165,16 +165,16 @@ export function AddAdsForm({ searchMessage, reportedDates }: AddAdsFormProps) {
                     </span>
                 </h2>
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-2 sm:gap-3">
                     <div className={`bg-[#F5F8FF]/80 p-5 rounded-3xl h-32 flex flex-col justify-between border border-white transition-opacity ${isDateTaken ? 'opacity-50' : ''}`}>
                         <div className="text-[10px] font-bold tracking-widest text-gray-500 uppercase">Efficiency</div>
-                        <div className="text-xl font-bold text-[#1E3A8A]">
+                        <div className="text-lg sm:text-xl font-bold text-[#1E3A8A]">
                             {cpl > 0 ? (cpl < 15 ? "High" : "Optimal") : "—"}
                         </div>
                     </div>
                     <div className={`bg-[#F5F8FF]/80 p-5 rounded-3xl h-32 flex flex-col justify-between border border-white relative overflow-hidden transition-opacity ${isDateTaken ? 'opacity-50' : ''}`}>
                         <div className="text-[10px] font-bold tracking-widest text-gray-500 uppercase">Target ROI</div>
-                        <div className="text-2xl font-bold text-[#FBBF24] tracking-tight leading-none z-10">
+                        <div className="text-xl sm:text-2xl font-bold text-[#FBBF24] tracking-tight leading-none z-10">
                             {cpl > 0 ? (200 / cpl).toFixed(1) + "x" : "—"}
                         </div>
                         <div className="absolute top-0 right-0 w-8 h-8 rounded-full bg-[#FBBF24] opacity-20 -translate-y-1/3 translate-x-1/3 blur-xl"></div>

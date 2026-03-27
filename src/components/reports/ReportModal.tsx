@@ -85,10 +85,10 @@ export function ReportModal({ report, onClose, currentUserId }: ReportModalProps
             />
 
             {/* Modal Panel */}
-            <div className="relative w-full max-w-lg bg-white rounded-[2.5rem] shadow-2xl animate-in slide-in-from-bottom-4 duration-300 max-h-[90vh] overflow-y-auto overflow-x-hidden pt-4 pb-2 sm:py-0">
+            <div className="relative w-full max-w-lg bg-white rounded-[1.5rem] sm:rounded-[2.5rem] shadow-2xl animate-in slide-in-from-bottom-4 duration-300 max-h-[90vh] overflow-y-auto overflow-x-hidden pt-4 pb-2 sm:py-0">
 
                 {/* Header */}
-                <div className="flex items-center justify-between p-7 pb-5 border-b border-gray-100 sticky top-0 bg-white/90 backdrop-blur-xl z-20">
+                <div className="flex items-center justify-between p-5 sm:p-7 pb-4 sm:pb-5 border-b border-gray-100 sticky top-0 bg-white/90 backdrop-blur-xl z-20">
                     <div className="flex items-center gap-4">
                         <div className="w-14 h-14 rounded-2xl bg-[#F5F8FF] text-[#1E3A8A] flex items-center justify-center font-black text-xl shrink-0 border border-white">
                             {initials}
@@ -122,7 +122,7 @@ export function ReportModal({ report, onClose, currentUserId }: ReportModalProps
                 )}
 
                 {/* Content Sections */}
-                <div className="flex flex-col gap-6 p-7">
+                <div className="flex flex-col gap-5 sm:gap-6 p-5 sm:p-7">
 
                     {/* Tasks Completed */}
                     <div className="flex flex-col gap-3">
@@ -199,7 +199,7 @@ export function ReportModal({ report, onClose, currentUserId }: ReportModalProps
                 </div>
 
                 {/* Footer Controls */}
-                <div className="p-7 pt-0 flex flex-col gap-3 sticky bottom-0 bg-white/90 backdrop-blur-xl z-20">
+                <div className="p-5 sm:p-7 pt-0 flex flex-col gap-3 sticky bottom-0 bg-white/90 backdrop-blur-xl z-20">
                     {editing ? (
                         <div className="flex gap-3">
                             <button

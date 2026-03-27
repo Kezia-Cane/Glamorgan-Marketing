@@ -31,30 +31,30 @@ export default async function AdsPage() {
             {/* Summary Stats Grid */}
             <div className="flex flex-col gap-4 mt-2">
                 {/* Monthly Spend Full Width */}
-                <div className="bg-[#F5F8FF]/60 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm border border-white/80 flex flex-col justify-center h-28 relative overflow-hidden transition-all duration-300 hover:shadow-md">
-                    <div className="text-[11px] font-bold tracking-widest text-[#6B7280] uppercase mb-1">
+                <div className="bg-[#F5F8FF]/60 backdrop-blur-xl rounded-[2rem] p-5 sm:p-6 shadow-sm border border-white/80 flex flex-col justify-center h-24 sm:h-28 relative overflow-hidden transition-all duration-300 hover:shadow-md">
+                    <div className="text-[10px] sm:text-[11px] font-bold tracking-widest text-[#6B7280] uppercase mb-0.5 sm:mb-1">
                         Monthly Spend
                     </div>
-                    <div className="text-[2.25rem] font-bold text-[#1E3A8A] tracking-tight">
+                    <div className="text-3xl sm:text-[2.25rem] font-bold text-[#1E3A8A] tracking-tight">
                         ${summary.totalSpend.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </div>
                 </div>
 
                 {/* 2-col grid for Conversions + CPL */}
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-[#F5F8FF]/60 backdrop-blur-xl rounded-[2rem] p-6 shadow-[0_4px_20px_rgb(0,0,0,0.02)] border border-white/80 flex flex-col justify-between h-40 transition-all duration-300 hover:shadow-md">
-                        <div className="text-[11px] font-bold tracking-widest text-[#6B7280] uppercase">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                    <div className="bg-[#F5F8FF]/60 backdrop-blur-xl rounded-[1.5rem] sm:rounded-[2rem] p-5 sm:p-6 shadow-[0_4px_20px_rgb(0,0,0,0.02)] border border-white/80 flex flex-col justify-between h-32 sm:h-40 transition-all duration-300 hover:shadow-md">
+                        <div className="text-[10px] sm:text-[11px] font-bold tracking-widest text-[#6B7280] uppercase">
                             Total Conv.
                         </div>
-                        <div className="text-[2rem] font-bold text-[#1E3A8A] tracking-tight">
+                        <div className="text-2xl sm:text-[2rem] font-bold text-[#1E3A8A] tracking-tight">
                             {summary.totalConversions.toLocaleString()}
                         </div>
                     </div>
-                    <div className="bg-[#F5F8FF]/60 backdrop-blur-xl rounded-[2rem] p-6 shadow-[0_4px_20px_rgb(0,0,0,0.02)] border border-white/80 flex flex-col justify-between h-40 transition-all duration-300 hover:shadow-md relative overflow-hidden">
-                        <div className="text-[11px] font-bold tracking-widest text-[#6B7280] uppercase z-10">
+                    <div className="bg-[#F5F8FF]/60 backdrop-blur-xl rounded-[1.5rem] sm:rounded-[2rem] p-5 sm:p-6 shadow-[0_4px_20px_rgb(0,0,0,0.02)] border border-white/80 flex flex-col justify-between h-32 sm:h-40 transition-all duration-300 hover:shadow-md relative overflow-hidden">
+                        <div className="text-[10px] sm:text-[11px] font-bold tracking-widest text-[#6B7280] uppercase z-10">
                             Avg. CPL
                         </div>
-                        <div className="text-[2rem] font-bold text-[#FBBF24] tracking-tight z-10">
+                        <div className="text-2xl sm:text-[2rem] font-bold text-[#FBBF24] tracking-tight z-10">
                             ${summary.avgCpl.toFixed(2)}
                         </div>
                         <div className="absolute top-0 right-0 w-24 h-24 bg-[#FBBF24] opacity-5 -translate-y-1/3 translate-x-1/3 rounded-full"></div>

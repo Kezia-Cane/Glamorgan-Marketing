@@ -58,10 +58,10 @@ export default async function DashboardPage() {
             {/* Metric Cards — stacked column, comfortable spacing */}
             <div className="flex flex-col gap-4">
                 {/* Monthly Spend */}
-                <div className="bg-white/80 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm border border-white/60 flex items-center justify-between">
+                <div className="bg-white/80 backdrop-blur-xl rounded-[2rem] p-5 sm:p-6 shadow-sm border border-white/60 flex items-center justify-between">
                     <div className="flex flex-col gap-1">
                         <span className="text-[11px] font-bold tracking-widest text-[#6B7280] uppercase">Ad Spend (This Month)</span>
-                        <span className="text-[2rem] font-bold text-[#FBBF24] tracking-tight leading-none">
+                        <span className="text-3xl sm:text-[2rem] font-bold text-[#FBBF24] tracking-tight leading-none">
                             ${totalSpend.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                         </span>
                     </div>
@@ -71,23 +71,23 @@ export default async function DashboardPage() {
                 </div>
 
                 {/* 2-col row for conversions + CPL */}
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white/80 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm border border-white/60 flex flex-col gap-3 transition-all hover:shadow-md">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                    <div className="bg-white/80 backdrop-blur-xl rounded-[1.5rem] sm:rounded-[2rem] p-5 sm:p-6 shadow-sm border border-white/60 flex flex-col gap-3 transition-all hover:shadow-md">
                         <div className="w-10 h-10 rounded-xl bg-[#EBF0FF] flex items-center justify-center">
                             <LinkIcon className="w-5 h-5 text-[#1E3A8A]" />
                         </div>
                         <div>
-                            <div className="text-[11px] font-bold tracking-widest text-[#6B7280] uppercase mb-1">Conversions</div>
-                            <div className="text-2xl font-bold text-[#1E3A8A] tracking-tight">{totalConversions.toLocaleString()}</div>
+                            <div className="text-[10px] sm:text-[11px] font-bold tracking-widest text-[#6B7280] uppercase mb-1">Conversions</div>
+                            <div className="text-xl sm:text-2xl font-bold text-[#1E3A8A] tracking-tight">{totalConversions.toLocaleString()}</div>
                         </div>
                     </div>
-                    <div className="bg-white/80 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm border border-white/60 flex flex-col gap-3 transition-all hover:shadow-md">
+                    <div className="bg-white/80 backdrop-blur-xl rounded-[1.5rem] sm:rounded-[2rem] p-5 sm:p-6 shadow-sm border border-white/60 flex flex-col gap-3 transition-all hover:shadow-md">
                         <div className="w-10 h-10 rounded-xl bg-[#EBF0FF] flex items-center justify-center">
                             <Activity className="w-5 h-5 text-[#1E3A8A]" />
                         </div>
                         <div>
-                            <div className="text-[11px] font-bold tracking-widest text-[#6B7280] uppercase mb-1">Avg. CPL</div>
-                            <div className="text-2xl font-bold text-[#1E3A8A] tracking-tight">${avgCpl.toFixed(2)}</div>
+                            <div className="text-[10px] sm:text-[11px] font-bold tracking-widest text-[#6B7280] uppercase mb-1">Avg. CPL</div>
+                            <div className="text-xl sm:text-2xl font-bold text-[#1E3A8A] tracking-tight">${avgCpl.toFixed(2)}</div>
                         </div>
                     </div>
                 </div>
