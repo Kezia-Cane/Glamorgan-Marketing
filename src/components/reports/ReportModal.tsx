@@ -136,7 +136,7 @@ export function ReportModal({ report, onClose, currentUserId }: ReportModalProps
                             <textarea value={tasks} onChange={e => setTasks(e.target.value)} rows={3}
                                 className="w-full bg-[#F5F8FF] rounded-2xl p-5 text-sm text-gray-700 font-medium border-none focus:ring-2 focus:ring-[#1E3A8A] outline-none resize-none" />
                         ) : (
-                            <div className="bg-[#F5F8FF] rounded-2xl p-5 text-sm text-gray-700 leading-relaxed whitespace-pre-wrap font-medium">
+                            <div className="bg-[#F5F8FF] rounded-2xl p-5 text-sm text-gray-700 leading-relaxed whitespace-pre-wrap break-words font-medium">
                                 {report.tasks_completed || '—'}
                             </div>
                         )}
@@ -154,7 +154,7 @@ export function ReportModal({ report, onClose, currentUserId }: ReportModalProps
                             <textarea value={results} onChange={e => setResults(e.target.value)} rows={3}
                                 className="w-full bg-[#FFFBEB]/60 border border-[#FEF3C7] rounded-2xl p-5 text-sm text-gray-700 font-medium focus:ring-2 focus:ring-[#F59E0B] outline-none resize-none" />
                         ) : (
-                            <div className="bg-[#FFFBEB]/60 border border-[#FEF3C7] rounded-2xl p-5 text-sm text-gray-700 leading-relaxed whitespace-pre-wrap font-medium">
+                            <div className="bg-[#FFFBEB]/60 border border-[#FEF3C7] rounded-2xl p-5 text-sm text-gray-700 leading-relaxed whitespace-pre-wrap break-words font-medium">
                                 {report.results || '—'}
                             </div>
                         )}
@@ -172,7 +172,7 @@ export function ReportModal({ report, onClose, currentUserId }: ReportModalProps
                             <textarea value={issues} onChange={e => setIssues(e.target.value)} rows={3}
                                 className="w-full bg-red-50 border border-red-100 rounded-2xl p-5 text-sm text-gray-700 font-medium focus:ring-2 focus:ring-red-500 outline-none resize-none" />
                         ) : (
-                            <div className="bg-red-50 border border-red-100 rounded-2xl p-5 text-sm text-gray-700 leading-relaxed whitespace-pre-wrap font-medium">
+                            <div className="bg-red-50 border border-red-100 rounded-2xl p-5 text-sm text-gray-700 leading-relaxed whitespace-pre-wrap break-words font-medium">
                                 {report.issues || '—'}
                             </div>
                         )}
@@ -190,7 +190,7 @@ export function ReportModal({ report, onClose, currentUserId }: ReportModalProps
                             <textarea value={plan} onChange={e => setPlan(e.target.value)} rows={3}
                                 className="w-full bg-[#F5F8FF] rounded-2xl p-5 text-sm text-gray-700 font-medium border-none focus:ring-2 focus:ring-[#1E3A8A] outline-none resize-none" />
                         ) : (
-                            <div className="bg-[#F5F8FF] rounded-2xl p-5 text-sm text-gray-700 leading-relaxed whitespace-pre-wrap font-medium">
+                            <div className="bg-[#F5F8FF] rounded-2xl p-5 text-sm text-gray-700 leading-relaxed whitespace-pre-wrap break-words font-medium">
                                 {report.next_plan || '—'}
                             </div>
                         )}
