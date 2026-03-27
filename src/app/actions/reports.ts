@@ -71,3 +71,44 @@ export async function getWeeklyReports() {
     if (error) return []
     return data
 }
+
+export async function updateWeeklyReport(id: string, formData: FormData) {
+    const supabase = await createClient()
+
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return { error: 'Not authenticated' }
+
+    const tasks_completed = formData.get('tasks') as string
+    const results = formData.get('results') as string
+    const issues = formData.get('issues') as string
+    const next_plan = formData.get('plan') as string
+
+    const { error } = await supabase
+        .from('weekly_reports')
+        .update({ tasks_completed, results, issues, next_plan })
+        .eq('id', id)
+        .or(`user_id.eq.${user.id},user_id.is.null`)
+
+    if (error) return { error: error.message }
+
+    revalidatePath('/reports')
+    return { success: true }
+}
+
+export async function deleteWeeklyReport(id: string) {
+    const supabase = await createClient()
+
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return { error: 'Not authenticated' }
+
+    const { error } = await supabase
+        .from('weekly_reports')
+        .delete()
+        .eq('id', id)
+        .or(`user_id.eq.${user.id},user_id.is.null`)
+
+    if (error) return { error: error.message }
+
+    revalidatePath('/reports')
+    return { success: true }
+}

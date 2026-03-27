@@ -1,7 +1,10 @@
 import { getWeeklyReports } from "@/app/actions/reports"
 import { ReportsList } from "@/components/reports/ReportsList"
+import { createClient } from "@/lib/supabase/server"
 
 export default async function ReportsPage() {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
     const reports = await getWeeklyReports()
 
     return (
@@ -17,7 +20,7 @@ export default async function ReportsPage() {
                 <div className="w-12 h-1 bg-[#FBBF24] rounded-full mt-2"></div>
             </div>
 
-            <ReportsList reports={reports} />
+            <ReportsList reports={reports} currentUserId={user?.id} />
 
         </div>
     )

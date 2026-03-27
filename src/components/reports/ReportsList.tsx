@@ -8,9 +8,10 @@ import { USER_NAMES } from "@/lib/utils"
 
 interface ReportsListProps {
     reports: any[]
+    currentUserId?: string
 }
 
-export function ReportsList({ reports }: ReportsListProps) {
+export function ReportsList({ reports, currentUserId }: ReportsListProps) {
     const [selectedReport, setSelectedReport] = useState<any | null>(null)
 
     return (
@@ -73,6 +74,7 @@ export function ReportsList({ reports }: ReportsListProps) {
                 <ReportModal
                     report={selectedReport}
                     onClose={() => setSelectedReport(null)}
+                    currentUserId={currentUserId}
                 />
             )}
         </>
