@@ -107,6 +107,20 @@ export async function getAdsReports() {
     return data
 }
 
+export async function getMyReportedDates() {
+    const supabase = await createClient()
+
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return []
+
+    const { data } = await supabase
+        .from('ads_reports')
+        .select('date')
+        .or(`created_by.eq.${user.id},created_by.is.null`)
+
+    return data?.map(d => d.date) || []
+}
+
 export async function getAdsSummary() {
     const supabase = await createClient()
     const now = new Date()
