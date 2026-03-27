@@ -67,7 +67,7 @@ export async function updateAdsReport(id: string, formData: FormData) {
         .from('ads_reports')
         .update({ ad_spend: spend, conversions, clicks, ctr, cost_per_conversion: cpl, notes })
         .eq('id', id)
-        .eq('created_by', user.id) // security: only own records
+        .or(`created_by.eq.${user.id},created_by.is.null`) // handle old records with null created_by
 
     if (error) return { error: error.message }
 
@@ -86,7 +86,7 @@ export async function deleteAdsReport(id: string) {
         .from('ads_reports')
         .delete()
         .eq('id', id)
-        .eq('created_by', user.id) // security: only own records
+        .or(`created_by.eq.${user.id},created_by.is.null`) // handle old records with null created_by
 
     if (error) return { error: error.message }
 
