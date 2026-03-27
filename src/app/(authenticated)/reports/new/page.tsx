@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server"
 import { submitWeeklyReport } from "@/app/actions/reports"
 import { Button } from "@/components/ui/button"
+import { SubmitButton } from "@/components/ui/SubmitButton"
 import {
     CheckCircle2, BarChart3, AlertTriangle, Rocket, ShieldCheck, History, Lock
 } from "lucide-react"
@@ -129,9 +130,10 @@ export default async function SubmitReportPage({
                     />
                 </div>
 
-                <Button type="submit" size="lg" className="w-full h-18 py-6 rounded-2xl bg-[#0B215E] text-lg font-bold tracking-tight mt-4">
-                    Submit Final Report
-                </Button>
+                <SubmitButton
+                    defaultText="Submit Final Report"
+                    className="w-full h-18 py-6 rounded-2xl bg-[#0B215E] text-lg font-bold tracking-tight mt-4"
+                />
 
                 <p className="text-[10px] font-bold tracking-[0.1em] text-center text-gray-500 uppercase mt-1">
                     Report will be shared with the Executive Dashboard

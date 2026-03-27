@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { Calendar, DollarSign } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { SubmitButton } from "@/components/ui/SubmitButton"
 import { submitAdsReport } from "@/app/actions/ads"
 
 export default function AddAdsDataPage({
@@ -136,9 +137,10 @@ export default function AddAdsDataPage({
                     />
                 </div>
 
-                <Button type="submit" size="lg" className="w-full h-16 rounded-[1.25rem] bg-[#1E3A8A] hover:bg-[#0B215E] text-base font-bold tracking-tight shadow-xl shadow-blue-500/10 mt-2">
-                    Submit Daily Report
-                </Button>
+                <SubmitButton
+                    defaultText="Submit Daily Report"
+                    className="w-full h-16 rounded-[1.25rem] bg-[#1E3A8A] hover:bg-[#0B215E] text-base font-bold tracking-tight shadow-xl shadow-blue-500/10 mt-2"
+                />
 
                 <p className="text-[10px] font-bold tracking-widest text-center text-gray-400 uppercase mt-2 opacity-60">
                     Authorized Editorial Submission Only
