@@ -5,11 +5,13 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Mail, Lock, Eye } from "lucide-react"
 
-export default function LoginPage({
+export default async function LoginPage({
     searchParams,
 }: {
-    searchParams: { message: string, error: string }
+    searchParams: Promise<{ message?: string, error?: string }>
 }) {
+    const params = await searchParams;
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-[#F5F8FF] to-white flex flex-col items-center justify-center p-6 sm:p-12 overflow-y-auto">
 
@@ -37,14 +39,14 @@ export default function LoginPage({
             {/* Login form card */}
             <div className="w-full max-w-[400px] mb-8 bg-white p-6 sm:p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-gray-100">
 
-                {searchParams.message && (
+                {params.message && (
                     <div className="p-4 bg-red-50 text-red-600 rounded-xl mb-6 text-sm border border-red-100">
-                        {searchParams.message}
+                        {params.message}
                     </div>
                 )}
-                {searchParams.error && (
+                {params.error && (
                     <div className="p-4 bg-red-50 text-red-600 rounded-xl mb-6 text-sm border border-red-100">
-                        There was an issue logging in: {searchParams.error}
+                        There was an issue logging in: {params.error}
                     </div>
                 )}
 
