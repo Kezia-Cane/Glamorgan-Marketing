@@ -30,7 +30,7 @@ export default async function AdsPage() {
 
             {/* Summary Stats Grid */}
             <div className="grid grid-cols-2 gap-4 mt-2">
-                <div className="bg-[#F5F8FF] rounded-[2rem] p-6 shadow-sm border border-gray-100 flex flex-col justify-between h-40">
+                <div className="bg-[#F5F8FF]/60 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm border border-white/80 flex flex-col justify-between h-40 transition-all duration-300 hover:shadow-md">
                     <div className="text-[11px] font-bold tracking-widest text-[#6B7280] uppercase">
                         Monthly Spend
                     </div>
@@ -38,7 +38,7 @@ export default async function AdsPage() {
                         ${summary.totalSpend.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </div>
                 </div>
-                <div className="bg-[#F5F8FF] rounded-[2rem] p-6 shadow-sm border border-gray-100 flex flex-col justify-between h-40">
+                <div className="bg-[#F5F8FF]/60 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm border border-white/80 flex flex-col justify-between h-40 transition-all duration-300 hover:shadow-md">
                     <div className="text-[11px] font-bold tracking-widest text-[#6B7280] uppercase">
                         Total Conv.
                     </div>
@@ -49,7 +49,7 @@ export default async function AdsPage() {
             </div>
 
             {/* Avg CPL Full Width Card */}
-            <div className="bg-[#F5F8FF] rounded-[2rem] p-6 shadow-sm border border-gray-100 flex flex-col justify-center h-28 relative overflow-hidden">
+            <div className="bg-[#F5F8FF]/60 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm border border-white/80 flex flex-col justify-center h-28 relative overflow-hidden transition-all duration-300 hover:shadow-md">
                 <div className="text-[11px] font-bold tracking-widest text-[#6B7280] uppercase mb-1">
                     Avg. CPL
                 </div>

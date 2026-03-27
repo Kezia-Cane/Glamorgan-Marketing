@@ -38,7 +38,7 @@ export function BottomNav() {
     }
 
     return (
-        <nav className="fixed bottom-0 w-full left-0 z-50 bg-white border-t border-gray-100 px-2 py-2 pb-safe shadow-[0_-4px_20px_rgba(0,0,0,0.02)]">
+        <nav className="fixed bottom-0 w-full left-0 z-50 bg-white/70 backdrop-blur-2xl border-t border-white/60 px-2 py-2 shadow-[0_-8px_30px_rgb(0,0,0,0.04)]">
             <div className="flex justify-around items-center max-w-md mx-auto">
                 {NAV_ITEMS.map((item) => {
                     const active = isMatch(item.href)
@@ -49,8 +49,8 @@ export function BottomNav() {
                             key={item.href}
                             href={item.href}
                             className={`flex flex-col items-center justify-center w-16 h-14 rounded-2xl transition-all duration-200 ${active
-                                    ? "bg-[#F5F8FF] text-[#1E3A8A]"
-                                    : "text-gray-400 hover:text-gray-600 hover:bg-gray-50"
+                                ? "bg-[#F5F8FF] text-[#1E3A8A]"
+                                : "text-gray-400 hover:text-gray-600 hover:bg-gray-50"
                                 }`}
                         >
                             <Icon

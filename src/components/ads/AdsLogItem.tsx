@@ -61,7 +61,7 @@ export function AdsLogItem({ item, isAdmin }: AdsLogItemProps) {
 
     if (editing) {
         return (
-            <div className="bg-white rounded-[2rem] p-6 shadow-md ring-2 ring-[#1E3A8A]/20 flex flex-col gap-4">
+            <div className="bg-white/80 backdrop-blur-xl rounded-[2rem] p-6 shadow-md border border-white/60 flex flex-col gap-4">
                 <div className="flex items-center justify-between">
                     <div>
                         <span className="text-[11px] font-bold tracking-widest text-[#1E3A8A] uppercase">{label}</span>
@@ -128,7 +128,7 @@ export function AdsLogItem({ item, isAdmin }: AdsLogItemProps) {
     }
 
     return (
-        <div className="bg-white rounded-[2rem] p-6 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.02)] ring-1 ring-gray-100/60 flex flex-col gap-4 relative group">
+        <div className="bg-white/80 backdrop-blur-xl rounded-[2rem] p-6 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/60 flex flex-col gap-4 relative group transition-all duration-300 hover:shadow-lg">
             {/* Date Header + Action Buttons */}
             <div className="flex items-start justify-between">
                 <div className="flex flex-col gap-0.5">

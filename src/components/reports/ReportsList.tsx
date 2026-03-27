@@ -34,7 +34,7 @@ export function ReportsList({ reports }: ReportsListProps) {
             {/* Reports List */}
             <div className="flex flex-col gap-4 mt-2">
                 {reports.length === 0 ? (
-                    <div className="bg-white rounded-[2rem] p-10 text-center text-gray-400 ring-1 ring-gray-100">
+                    <div className="bg-white/80 backdrop-blur-xl rounded-[2rem] p-10 text-center text-gray-400 border border-white/60">
                         <p className="font-semibold mb-1">No reports yet.</p>
                         <p className="text-sm">Tap <span className="font-bold text-[#1E3A8A]">+</span> to submit your first weekly report.</p>
                     </div>
@@ -46,7 +46,7 @@ export function ReportsList({ reports }: ReportsListProps) {
                     return (
                         <div
                             key={report.id}
-                            className="bg-white rounded-[2rem] p-5 sm:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.02)] ring-1 ring-gray-50 flex items-center justify-between group hover:shadow-md transition-all duration-300 cursor-pointer"
+                            className="bg-white/80 backdrop-blur-xl rounded-[2rem] p-5 sm:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/60 flex items-center justify-between group hover:shadow-lg transition-all duration-300 cursor-pointer"
                             onClick={() => setSelectedReport(report)}
                         >
                             <div className="flex items-center gap-4">

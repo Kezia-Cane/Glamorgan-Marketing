@@ -14,7 +14,7 @@ export function MetricCard({ label, value, trend, trendLabel = "vs last month", 
     const isNegative = trend && trend < 0
 
     return (
-        <div className="bg-white rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-gray-100 flex flex-col mt-4">
+        <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/60 flex flex-col mt-4 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
             <div className="flex justify-between items-start mb-4">
                 <h3 className="text-xs font-semibold tracking-widest text-[#6B7280] uppercase">
                     {label}

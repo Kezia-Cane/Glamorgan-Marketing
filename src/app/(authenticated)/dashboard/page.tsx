@@ -58,7 +58,7 @@ export default async function DashboardPage() {
             {/* Metric Cards — stacked column, comfortable spacing */}
             <div className="flex flex-col gap-4">
                 {/* Monthly Spend */}
-                <div className="bg-white rounded-[2rem] p-6 shadow-sm border border-gray-100 flex items-center justify-between">
+                <div className="bg-white/80 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm border border-white/60 flex items-center justify-between">
                     <div className="flex flex-col gap-1">
                         <span className="text-[11px] font-bold tracking-widest text-[#6B7280] uppercase">Ad Spend (This Month)</span>
                         <span className="text-[2rem] font-bold text-[#FBBF24] tracking-tight leading-none">
@@ -72,7 +72,7 @@ export default async function DashboardPage() {
 
                 {/* 2-col row for conversions + CPL */}
                 <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white rounded-[2rem] p-6 shadow-sm border border-gray-100 flex flex-col gap-3">
+                    <div className="bg-white/80 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm border border-white/60 flex flex-col gap-3 transition-all hover:shadow-md">
                         <div className="w-10 h-10 rounded-xl bg-[#EBF0FF] flex items-center justify-center">
                             <LinkIcon className="w-5 h-5 text-[#1E3A8A]" />
                         </div>
@@ -81,7 +81,7 @@ export default async function DashboardPage() {
                             <div className="text-2xl font-bold text-[#1E3A8A] tracking-tight">{totalConversions.toLocaleString()}</div>
                         </div>
                     </div>
-                    <div className="bg-white rounded-[2rem] p-6 shadow-sm border border-gray-100 flex flex-col gap-3">
+                    <div className="bg-white/80 backdrop-blur-xl rounded-[2rem] p-6 shadow-sm border border-white/60 flex flex-col gap-3 transition-all hover:shadow-md">
                         <div className="w-10 h-10 rounded-xl bg-[#EBF0FF] flex items-center justify-center">
                             <Activity className="w-5 h-5 text-[#1E3A8A]" />
                         </div>
@@ -98,7 +98,7 @@ export default async function DashboardPage() {
                 <div className="flex flex-col gap-5 mt-2">
                     {/* Missing Reports Alert */}
                     {missingReportVAs.length > 0 && (
-                        <div className="bg-[#FFFBEB] rounded-[2rem] p-5 border border-[#FEF3C7]">
+                        <div className="bg-[#FFFBEB]/80 backdrop-blur-xl rounded-[2rem] p-5 border border-white/60 shadow-sm">
                             <div className="flex items-center gap-2 text-[#F59E0B] font-bold text-[11px] uppercase tracking-widest mb-2">
                                 <AlertCircle className="w-4 h-4" />
                                 Missing Weekly Reports
@@ -122,11 +122,11 @@ export default async function DashboardPage() {
                         </div>
                         <div className="flex flex-col gap-3">
                             {recentAds.length === 0 ? (
-                                <div className="bg-white rounded-2xl p-4 text-center text-sm text-gray-400 ring-1 ring-gray-100">No ads submitted yet.</div>
+                                <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-4 text-center text-sm text-gray-400 border border-white/60">No ads submitted yet.</div>
                             ) : recentAds.map((ad: any) => {
                                 const name = USER_NAMES[ad.users?.email || ''] || ad.users?.name || 'Unknown'
                                 return (
-                                    <div key={ad.id} className="bg-white rounded-2xl p-4 shadow-sm ring-1 ring-gray-100 flex justify-between items-center">
+                                    <div key={ad.id} className="bg-white/80 backdrop-blur-xl rounded-2xl p-4 shadow-sm border border-white/60 flex justify-between items-center transition-all hover:shadow-md">
                                         <div>
                                             <div className="font-bold text-sm text-gray-900">{name}</div>
                                             <div className="text-xs text-gray-400 font-medium mt-0.5">{ad.date}</div>
@@ -153,11 +153,11 @@ export default async function DashboardPage() {
                         </div>
                         <div className="flex flex-col gap-3">
                             {recentReports.length === 0 ? (
-                                <div className="bg-white rounded-2xl p-4 text-center text-sm text-gray-400 ring-1 ring-gray-100">No reports found.</div>
+                                <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-4 text-center text-sm text-gray-400 border border-white/60">No reports found.</div>
                             ) : recentReports.map((report: any) => {
                                 const name = USER_NAMES[report.users?.email || ''] || report.users?.name || 'Unknown'
                                 return (
-                                    <Link key={report.id} href="/reports" className="bg-white rounded-2xl p-4 shadow-sm ring-1 ring-gray-100 flex justify-between items-center hover:shadow-md transition-all cursor-pointer group">
+                                    <Link key={report.id} href="/reports" className="bg-white/80 backdrop-blur-xl rounded-2xl p-4 shadow-sm border border-white/60 flex justify-between items-center hover:shadow-md transition-all cursor-pointer group">
                                         <div>
                                             <div className="font-bold text-sm text-gray-900">{name}</div>
                                             <div className="text-xs text-gray-400 font-medium mt-0.5">{report.week_start}</div>
@@ -177,7 +177,7 @@ export default async function DashboardPage() {
                     <div className="text-[#1E3A8A] font-bold text-xl tracking-tight">Monthly Summary</div>
                     <div className="text-sm text-gray-500 font-medium">Performance breakdown for this month</div>
 
-                    <div className="bg-white rounded-[2rem] p-6 sm:p-8 shadow-sm border border-gray-100 h-56 flex flex-col justify-between">
+                    <div className="bg-white/80 backdrop-blur-xl rounded-[2rem] p-6 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/60 h-56 flex flex-col justify-between">
                         <div className="flex justify-between items-center text-sm font-semibold text-gray-800">
                             Conversion Velocity
                             <div className="flex gap-2">
