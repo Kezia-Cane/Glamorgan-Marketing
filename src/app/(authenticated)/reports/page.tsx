@@ -67,14 +67,6 @@ export default async function ReportsPage() {
                     )
                 })}
             </div>
-
-            {/* FLOATING ACTION BUTTON */}
-            <Link href="/reports/new" className="fixed bottom-24 right-6 sm:right-12 z-40">
-                <button className="w-16 h-16 bg-[#1E3A8A] text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 ring-4 ring-white">
-                    <Plus className="w-8 h-8" />
-                </button>
-            </Link>
-
         </div>
     )
 }
