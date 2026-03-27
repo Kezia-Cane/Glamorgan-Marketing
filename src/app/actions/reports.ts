@@ -10,20 +10,30 @@ export async function submitWeeklyReport(formData: FormData) {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) redirect('/login')
 
-    const period = formData.get('period') as string
+    // Compute week_start (Monday) and week_end (Sunday) from today
+    const now = new Date()
+    const dayOfWeek = now.getDay() // 0=Sun, 1=Mon...
+    const monday = new Date(now)
+    monday.setDate(now.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1))
+    const sunday = new Date(monday)
+    sunday.setDate(monday.getDate() + 6)
+
+    const week_start = monday.toISOString().split('T')[0]
+    const week_end = sunday.toISOString().split('T')[0]
+
     const tasks_completed = formData.get('tasks') as string
-    const results_kpis = formData.get('results') as string
-    const issues_blockers = formData.get('issues') as string
+    const results = formData.get('results') as string
+    const issues = formData.get('issues') as string
     const next_plan = formData.get('plan') as string
 
     const { error } = await supabase.from('weekly_reports').insert({
         user_id: user.id,
-        period,
+        week_start,
+        week_end,
         tasks_completed,
-        results_kpis,
-        issues_blockers,
+        results,
+        issues,
         next_plan,
-        status: 'submitted',
     })
 
     if (error) {

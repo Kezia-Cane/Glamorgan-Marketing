@@ -19,7 +19,7 @@ export async function submitAdsReport(formData: FormData) {
     const ctr = clicks > 0 ? (conversions / clicks) * 100 : 0
 
     const { error } = await supabase.from('ads_reports').insert({
-        user_id: user.id,
+        created_by: user.id,
         date,
         ad_spend: spend,
         conversions,
