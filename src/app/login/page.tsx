@@ -110,13 +110,6 @@ export default async function LoginPage({
                         Access Dashboard
                     </Button>
 
-                    <div className="relative flex items-center py-2">
-                        <div className="flex-grow border-t border-gray-100"></div>
-                        <span className="mx-4 text-xs font-semibold tracking-widest text-gray-400 uppercase">OR</span>
-                        <div className="flex-grow border-t border-gray-100"></div>
-                    </div>
-
-
                 </form>
 
             </div>

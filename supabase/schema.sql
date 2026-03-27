@@ -67,7 +67,7 @@ begin
   insert into public.users (id, email, name, role)
   values (new.id, new.email, coalesce(new.raw_user_meta_data->>'name', split_part(new.email, '@', 1)), coalesce(new.raw_user_meta_data->>'role', 'va'));
   return new;
-end;
+end;  
 $$;
 
 -- Trigger the function every time a user is created
