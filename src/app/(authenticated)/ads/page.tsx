@@ -1,8 +1,18 @@
 import { getAdsReports, getAdsSummary } from "@/app/actions/ads"
-import { Filter, Plus } from "lucide-react"
-import Link from "next/link"
+import { Filter } from "lucide-react"
+import { createClient } from "@/lib/supabase/server"
+import { AdsLogItem } from "@/components/ads/AdsLogItem"
 
 export default async function AdsPage() {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    let isAdmin = false
+    if (user) {
+        const { data: profile } = await supabase.from('users').select('role').eq('id', user.id).single()
+        isAdmin = profile?.role === 'admin'
+    }
+
     const [reports, summary] = await Promise.all([getAdsReports(), getAdsSummary()])
 
     return (
@@ -52,7 +62,7 @@ export default async function AdsPage() {
             {/* Daily Log Header */}
             <div className="flex items-center justify-between mt-4">
                 <h2 className="text-xl font-bold text-[#1E3A8A] tracking-tight">Daily Log</h2>
-                <button className="p-2 text-gray-500 hover:bg-gray-100 rounded-xl transition-colors">
+                <button className="p-2 text-gray-500 hover:bg-gray-100 rounded-xl transition-colors cursor-pointer">
                     <Filter className="w-5 h-5" />
                 </button>
             </div>
@@ -63,47 +73,9 @@ export default async function AdsPage() {
                     <div className="bg-white rounded-[2rem] p-8 text-center text-gray-400 ring-1 ring-gray-100">
                         No entries yet. Tap <span className="font-bold text-[#1E3A8A]">+</span> to add your first daily report.
                     </div>
-                ) : reports.map((item) => {
-                    const date = new Date(item.date)
-                    const today = new Date()
-                    const yesterday = new Date(today)
-                    yesterday.setDate(today.getDate() - 1)
-
-                    const label = date.toDateString() === today.toDateString()
-                        ? 'TODAY'
-                        : date.toDateString() === yesterday.toDateString()
-                            ? 'YESTERDAY'
-                            : 'PAST'
-
-                    return (
-                        <div key={item.id} className="bg-white rounded-[2rem] p-6 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.02)] ring-1 ring-gray-100/60 flex flex-col gap-4 relative">
-                            <div className="flex flex-col gap-0.5">
-                                <span className="text-[11px] font-bold tracking-widest text-[#1E3A8A] uppercase">{label}</span>
-                                <span className="text-lg font-bold text-gray-900">
-                                    {date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                                </span>
-                            </div>
-
-                            <div className="flex items-center justify-between mt-auto">
-                                <div className="flex flex-col gap-1">
-                                    <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Spend</span>
-                                    <span className="text-[15px] font-bold text-gray-900">${Number(item.ad_spend).toFixed(2)}</span>
-                                </div>
-                                <div className="flex flex-col gap-1">
-                                    <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Conversions</span>
-                                    <span className="text-[15px] font-bold text-gray-900">{item.conversions}</span>
-                                </div>
-                                <div className="flex flex-col gap-1 items-end">
-                                    <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">CPL</span>
-                                    <span className="text-[15px] font-bold text-[#1E3A8A]">${Number(item.cost_per_conversion).toFixed(2)}</span>
-                                </div>
-                            </div>
-                            {item.notes && (
-                                <p className="text-xs text-gray-400 italic border-t border-gray-50 pt-3">{item.notes}</p>
-                            )}
-                        </div>
-                    )
-                })}
+                ) : reports.map((item: any) => (
+                    <AdsLogItem key={item.id} item={item} isAdmin={isAdmin} />
+                ))}
             </div>
 
             <div className="w-full flex justify-center py-4">
